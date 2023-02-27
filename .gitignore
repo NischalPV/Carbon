@@ -1,0 +1,4 @@
+**/src/Services/**/**/.vs
+**/src/Services/**/**/.vscode
+**/src/Services/**/**/bin
+**/src/Services/**/**/obj
