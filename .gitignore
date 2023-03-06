@@ -2,3 +2,6 @@
 **/src/Services/**/**/.vscode
 **/src/Services/**/**/bin
 **/src/Services/**/**/obj
+src/Services/API/Carbon.Api/__pycache__/*
+src/Services/API/Carbon.Api/**/__pycache__/*
+

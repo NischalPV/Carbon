@@ -34,7 +34,7 @@ public class MasterData
         users.Add(new ApplicationUser(createdDate: new DateTime(2021, 12, 15, 0, 0, 0, DateTimeKind.Utc))
         {
             FirstName = "SysAdmin",
-            LastName = "@Lithium",
+            LastName = "@Carbon",
             DateOfBirth = new DateTime(2022, 1, 1, 0, 0, 0, DateTimeKind.Utc),
             Email = "admin.carbon@hotmail.com",
             UserName = "+919888888888",
@@ -196,6 +196,14 @@ public class MasterData
         foreach (var uri in clientRedirectUris)
         {
             modelBuilder.Entity<ClientRedirectUri>().HasData(uri);
+        }
+
+        var clientSecrets = Configuration.IdentityServer.GetClientSecrets();
+
+        
+        foreach(var secret in clientSecrets)
+        {
+            modelBuilder.Entity<ClientSecret>().HasData(secret);
         }
     }
 

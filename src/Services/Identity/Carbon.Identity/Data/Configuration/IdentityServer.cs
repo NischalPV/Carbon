@@ -340,7 +340,7 @@ public class IdentityServer
                     RequireConsent = false,
                     AllowRememberConsent = true,
                     AlwaysIncludeUserClaimsInIdToken = false,
-                    RequirePkce = true,
+                    RequirePkce = false,
                     AllowPlainTextPkce = false,
                     RequireRequestObject = false,
                     AllowAccessTokensViaBrowser = true,
@@ -445,6 +445,18 @@ public class IdentityServer
                     ClientId = 3,
                     Origin = $"https://carbon.web.azurewebsites.net"
                 },
+                new ClientCorsOrigin()
+                {
+                    Id = 3,
+                    ClientId = 2,
+                    Origin = $"http://localhost:6002"
+                },
+                new ClientCorsOrigin()
+                {
+                    Id = 4,
+                    ClientId = 4,
+                    Origin = $"https://carbon-api.azurewebsites.net"
+                },
             };
     }
 
@@ -527,7 +539,7 @@ public class IdentityServer
                 {
                     Id = 2,
                     ClientId = 2,
-                    GrantType = "implicit"
+                    GrantType = "authorization_code"
                 },
                 new ClientGrantType()
                 {
@@ -562,7 +574,7 @@ public class IdentityServer
                 {
                     Id = 2,
                     ClientId = 2,
-                    PostLogoutRedirectUri = $"http://localhost:6002/swagger/"
+                    PostLogoutRedirectUri = $"http://localhost:6002/docs/"
                 },
                 new ClientPostLogoutRedirectUri()
                 {
@@ -598,7 +610,7 @@ public class IdentityServer
                 {
                     Id = 2,
                     ClientId = 2,
-                    RedirectUri = $"http://localhost:6002/swagger/oauth2-redirect.html"
+                    RedirectUri = $"http://localhost:6002/docs/oauth2-redirect"
                 },
                 new ClientRedirectUri()
                 {
@@ -610,9 +622,22 @@ public class IdentityServer
                 {
                     Id = 4,
                     ClientId = 4,
-                    RedirectUri = $"https://carbon-api.azurewebsites.net/swagger/oauth2-redirect.html"
+                    RedirectUri = $"https://carbon-api.azurewebsites.net/docs/oauth2-redirect"
                 },
             };
 
+    }
+
+    public static IEnumerable<ClientSecret> GetClientSecrets()
+    {
+        return new List<ClientSecret>
+        {
+            new ClientSecret()
+            {
+                Id = 1,
+                ClientId = 2,
+                Value = "carbon@2023",
+            }
+        };
     }
 }

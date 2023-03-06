@@ -3,6 +3,7 @@ using System;
 using Carbon.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
 {
     [DbContext(typeof(ConfigurationDbContext))]
-    partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230305070912_data.clients.update")]
+    partial class dataclientsupdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -268,7 +271,7 @@ namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 3, 6, 9, 44, 14, 245, DateTimeKind.Utc).AddTicks(3520),
+                            Created = new DateTime(2023, 3, 5, 7, 9, 11, 957, DateTimeKind.Utc).AddTicks(1620),
                             DisplayName = "API Scope",
                             Emphasize = false,
                             Enabled = true,
@@ -605,7 +608,7 @@ namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
                             RefreshTokenUsage = 1,
                             RequireClientSecret = true,
                             RequireConsent = false,
-                            RequirePkce = false,
+                            RequirePkce = true,
                             RequireRequestObject = false,
                             SlidingRefreshTokenLifetime = 1296000,
                             UpdateAccessTokenClaimsOnRefresh = false
@@ -712,18 +715,6 @@ namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
                             Id = 2,
                             ClientId = 3,
                             Origin = "https://carbon.web.azurewebsites.net"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClientId = 2,
-                            Origin = "http://localhost:6002"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ClientId = 4,
-                            Origin = "https://carbon-api.azurewebsites.net"
                         });
                 });
 
@@ -761,7 +752,7 @@ namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
                         {
                             Id = 2,
                             ClientId = 2,
-                            GrantType = "authorization_code"
+                            GrantType = "implicit"
                         },
                         new
                         {
@@ -835,7 +826,7 @@ namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
                         {
                             Id = 2,
                             ClientId = 2,
-                            PostLogoutRedirectUri = "http://localhost:6002/docs/"
+                            PostLogoutRedirectUri = "http://localhost:6002/swagger/"
                         },
                         new
                         {
@@ -914,7 +905,7 @@ namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
                         {
                             Id = 2,
                             ClientId = 2,
-                            RedirectUri = "http://localhost:6002/docs/oauth2-redirect"
+                            RedirectUri = "http://localhost:6002/docs"
                         },
                         new
                         {
@@ -926,7 +917,7 @@ namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
                         {
                             Id = 4,
                             ClientId = 4,
-                            RedirectUri = "https://carbon-api.azurewebsites.net/docs/oauth2-redirect"
+                            RedirectUri = "https://carbon-api.azurewebsites.net/swagger/oauth2-redirect.html"
                         });
                 });
 
@@ -1040,16 +1031,6 @@ namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
                     b.HasIndex("ClientId");
 
                     b.ToTable("ClientSecrets", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClientId = 2,
-                            Created = new DateTime(2023, 3, 6, 9, 44, 14, 245, DateTimeKind.Utc).AddTicks(4080),
-                            Type = "SharedSecret",
-                            Value = "carbon@2023"
-                        });
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityProvider", b =>

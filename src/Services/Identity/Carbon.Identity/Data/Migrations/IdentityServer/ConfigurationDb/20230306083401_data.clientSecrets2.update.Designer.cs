@@ -3,6 +3,7 @@ using System;
 using Carbon.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
 {
     [DbContext(typeof(ConfigurationDbContext))]
-    partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230306083401_data.clientSecrets2.update")]
+    partial class dataclientSecrets2update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -268,7 +271,7 @@ namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 3, 6, 9, 44, 14, 245, DateTimeKind.Utc).AddTicks(3520),
+                            Created = new DateTime(2023, 3, 6, 8, 34, 1, 295, DateTimeKind.Utc).AddTicks(8470),
                             DisplayName = "API Scope",
                             Emphasize = false,
                             Enabled = true,
@@ -1046,9 +1049,9 @@ namespace Carbon.Identity.Data.Migrations.IdentityServer.ConfigurationDb
                         {
                             Id = 1,
                             ClientId = 2,
-                            Created = new DateTime(2023, 3, 6, 9, 44, 14, 245, DateTimeKind.Utc).AddTicks(4080),
+                            Created = new DateTime(2023, 3, 6, 8, 34, 1, 295, DateTimeKind.Utc).AddTicks(9030),
                             Type = "SharedSecret",
-                            Value = "carbon@2023"
+                            Value = "60344ff688ccdbdac5286c08be8e1faa81d6ecdc236e5d46f8ef145fa9ef752d"
                         });
                 });
 
